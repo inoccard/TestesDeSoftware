@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using System.Threading;
-using Features.Clientes;
+﻿using Features.Clientes;
 using MediatR;
 using Moq;
+using System.Linq;
+using System.Threading;
 using Xunit;
 
 namespace Features.Tests
@@ -32,8 +32,8 @@ namespace Features.Tests
 
             // Assert
             Assert.True(cliente.EhValido());
-            _clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>().Verify(r => r.Adicionar(cliente),Times.Once);
-            _clienteTestsAutoMockerFixture.Mocker.GetMock<IMediator>().Verify(m=>m.Publish(It.IsAny<INotification>(),CancellationToken.None),Times.Once);
+            _clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>().Verify(r => r.Adicionar(cliente), Times.Once);
+            _clienteTestsAutoMockerFixture.Mocker.GetMock<IMediator>().Verify(m => m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Once);
         }
 
         [Fact(DisplayName = "Adicionar Cliente com Falha")]
@@ -66,7 +66,7 @@ namespace Features.Tests
             // Assert 
             _clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>().Verify(r => r.ObterTodos(), Times.Once);
             Assert.True(clientes.Any());
-            Assert.False(clientes.Count(c=>!c.Ativo) > 0);
+            Assert.False(clientes.Count(c => !c.Ativo) > 0);
         }
     }
 }

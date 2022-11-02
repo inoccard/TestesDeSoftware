@@ -1,5 +1,5 @@
-﻿using System;
-using Features.Clientes;
+﻿using Features.Clientes;
+using System;
 using Xunit;
 
 namespace Features.Tests
@@ -7,7 +7,7 @@ namespace Features.Tests
     public class ClienteTests
     {
         [Fact(DisplayName = "Novo Cliente Válido")]
-        [Trait("Categoria","Cliente Trait Testes")]
+        [Trait("Categoria", "Cliente Trait Testes")]
         public void Cliente_NovoCliente_DeveEstarValido()
         {
             // Arrange
