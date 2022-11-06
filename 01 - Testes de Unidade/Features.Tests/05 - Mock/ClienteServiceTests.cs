@@ -32,8 +32,12 @@ namespace Features.Tests
             clienteService.Adicionar(cliente);
 
             // Assert
-            Assert.True(cliente.EhValido());
-            clienteRepo.Verify(r => r.Adicionar(cliente), Times.Once);
+            Assert.True(cliente.EhValido()); // só usa EhValido se ainda não existe dentro do Adicionar
+
+            // verifica se o método foi chamado anteriormente
+            clienteRepo.Verify(r => r.Adicionar(cliente), Times.Once); // se foi chamado uma vez (Times.Once)
+
+            // se foi passado qualquer classe que implementa  INotification
             mediatr.Verify(m => m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Once);
         }
 
